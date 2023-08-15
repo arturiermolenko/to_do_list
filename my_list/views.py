@@ -10,6 +10,9 @@ from my_list.models import Task, Tag
 class TaskListView(generic.ListView):
     model = Task
 
+    def get_queryset(self):
+        return Task.objects.order_by("is_done", "date_time")
+
 
 class TaskCreateView(generic.CreateView):
     model = Task
