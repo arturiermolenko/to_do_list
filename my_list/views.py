@@ -54,7 +54,6 @@ class TagDeleteView(generic.DeleteView):
 
 def toggle_is_done(request, pk):
     task = Task.objects.get(id=pk)
-    print(task.date_time)
     if task.is_done:
         task.is_done = False
         task.save()
