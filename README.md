@@ -1,4 +1,5 @@
 This is a simple "ToDoList" project. It can be helpful to manage Your daytime.
+
 Features:
 - create Tasks with it's content, creation date and tags
 - add a deadline time
