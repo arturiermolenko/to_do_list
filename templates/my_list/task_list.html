@@ -20,9 +20,15 @@
           <a href="{%  url 'my_list:task-update' pk=task.pk %}" class="btn btn-primary">Update</a>
           <a href="{%  url 'my_list:task-delete' pk=task.pk %}" class="btn btn-danger">Delete</a>
           {% if task.is_done %}
-            <a href="{%  url 'my_list:toggle-is-done' pk=task.pk %}" class="btn btn-secondary link-to-page">Undo</a>
+            <form action="{% url 'my_list:toggle-is-done' pk=task.pk %}">
+            {% csrf_token %}
+              <button formmethod="post" class="btn btn-secondary link-to-page">Undo</button>
+            </form>
           {% elif  not task.is_done %}
-            <a href="{%  url 'my_list:toggle-is-done' pk=task.pk %}" class="btn btn-success link-to-page">Complete</a>
+            <form action="{%  url 'my_list:toggle-is-done' pk=task.pk %}">
+            {% csrf_token %}
+              <button formmethod="post" class="btn btn-success link-to-page">Complete</button>
+            </form>
           {% endif %}
         </li>
       {% endfor %}
