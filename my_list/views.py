@@ -1,4 +1,5 @@
-from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
+from django.urls import reverse_lazy, reverse
 from django.views import generic
 from django.shortcuts import render
 
@@ -46,3 +47,16 @@ class TagUpdateView(generic.UpdateView):
 class TagDeleteView(generic.DeleteView):
     model = Tag
     success_url = reverse_lazy("my_list:tag-list")
+
+
+def toggle_is_done(request, pk):
+    task = Task.objects.get(id=pk)
+    print(task.date_time)
+    if task.is_done:
+        task.is_done = False
+        task.save()
+    elif not task.is_done:
+        task.is_done = True
+        task.save()
+    return HttpResponseRedirect(reverse_lazy("my_list:task-list"))
+

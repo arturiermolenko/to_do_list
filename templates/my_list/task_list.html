@@ -15,10 +15,15 @@
         <li>
           Content: {{ task.content }} <text style="color: red">{% if task.is_done %} Done {% else %} Not done {% endif %}</text><br>
           Created: {{ task.date_time }}<br>
-          Deadline: {{ task.deadline }}<br>
-{#          Tags: {% for tag in task.tags %} {{ tag }}, {% endfor %}#}
-          <a href="{%  url 'my_list:task-update' pk=task.pk %}">Update</a>
-          <a href="{%  url 'my_list:task-delete' pk=task.pk %}">delete</a>
+          {% if task.deadline %}Deadline: {{ task.deadline }}{% endif %}
+          Tags: {% for tag in task.tags.all %} {{ tag.name }},{% endfor %}
+          <a href="{%  url 'my_list:task-update' pk=task.pk %}" class="btn btn-primary">Update</a>
+          <a href="{%  url 'my_list:task-delete' pk=task.pk %}" class="btn btn-danger">Delete</a>
+          {% if task.is_done %}
+            <a href="{%  url 'my_list:toggle-is-done' pk=task.pk %}" class="btn btn-secondary link-to-page">Undo</a>
+          {% elif  not task.is_done %}
+            <a href="{%  url 'my_list:toggle-is-done' pk=task.pk %}" class="btn btn-success link-to-page">Complete</a>
+          {% endif %}
         </li>
       {% endfor %}
     </ul>
