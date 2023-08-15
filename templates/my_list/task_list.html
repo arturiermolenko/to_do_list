@@ -10,9 +10,9 @@
   </h1>
 
   {% if task_list %}
-    <ul>
+    <ul class="list-group">
       {% for task in task_list %}
-        <li>
+        <li class="list-group-item">
           Content: {{ task.content }} <text style="color: red">{% if task.is_done %} Done {% else %} Not done {% endif %}</text><br>
           Created: {{ task.date_time }}<br>
           {% if task.deadline %}Deadline: {{ task.deadline }}{% endif %}
