@@ -9,7 +9,7 @@ from my_list.views import (
     TagUpdateView,
     TagCreateView,
     TagDeleteView,
-    ToggleView
+    ToggleView,
 )
 
 urlpatterns = [
@@ -21,7 +21,7 @@ urlpatterns = [
     path("tags/create/", TagCreateView.as_view(), name="tag-create"),
     path("tags/<int:pk>/update/", TagUpdateView.as_view(), name="tag-update"),
     path("tags/<int:pk>/delete/", TagDeleteView.as_view(), name="tag-delete"),
-    path("<int:pk>/toggle-is_done/", ToggleView.as_view(), name="toggle-is-done")
+    path("<int:pk>/toggle-is_done/", ToggleView.as_view(), name="toggle-is-done"),
 ]
 
 app_name = "my_list"

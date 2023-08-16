@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class MyListConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'my_list'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "my_list"
