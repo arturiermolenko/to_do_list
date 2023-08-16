@@ -1,7 +1,7 @@
 from django.http import HttpRequest
 from django.test import TestCase
 
-from my_list.models import Task
+from my_list.models import Task, Tag
 from my_list.views import ToggleView
 
 
@@ -14,6 +14,15 @@ class ModelStrTests(TestCase):
         self.assertEqual(
             str(self.task),
             self.task.content
+        )
+
+    def test_tag_str(self):
+        self.tag = Tag.objects.create(
+            name="test tag"
+        )
+        self.assertEqual(
+            str(self.tag),
+            self.tag.name
         )
 
 
